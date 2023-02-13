@@ -42,4 +42,10 @@ public class IndexController {
 	{
 		return "UserArea";
 	}
+	
+	@RequestMapping("/AllUsers")
+	public String AllUsers()
+	{
+		return "AllUsers";
+	}
 }
