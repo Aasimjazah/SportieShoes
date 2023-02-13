@@ -36,21 +36,18 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/CheckUser")
-	public String checkUSer(@RequestBody AuthorizeUser user)
+	public User checkUSer(@RequestBody AuthorizeUser user)
 	{
-		List<User> u = (List<User>) service.getAllUser();
+		User u = service.findByEmail(user.getEmail());
          
-		for(User use: u)
-		{
-			if(use.getEmail().equalsIgnoreCase(user.getEmail()) && use.getPassword().equals(user.getPassword()))
+			if(u.getEmail().equalsIgnoreCase(user.getEmail()) && u.getPassword().equals(user.getPassword()))
 			{
-				System.out.println(use.getEmail());
-				System.out.println(use.getPassword());
-				return "success";
+				System.out.println(u.getEmail());
+				System.out.println(u.getPassword());
+				return u;
 			}
-		}
 		
-		return "failure";
+		return null;
 		
 		
 	}
