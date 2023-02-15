@@ -14,34 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.AuthorizeUser;
 import com.example.demo.entity.User;
+import com.example.demo.entity.Vendor;
 import com.example.demo.service.UserService;
+import com.example.demo.service.VendorService;
 
 @RestController
-public class UserController {
+public class VendorController {
 
 	@Autowired
-	private UserService service;
+	private VendorService service;
 	
-	@PostMapping(value="/SaveUser")
-	public String saveUser(@RequestBody User user)
+	@PostMapping(value="/SaveVendor")
+	public String saveUser(@RequestBody Vendor vendor)
 	{
-		service.addUser(user);
+		service.addVendor(vendor);
 		
 		return "success";
 	}
 	
-	@GetMapping("/GetUser/{id}")
-	public User getUserById(@PathVariable("id") int id)
+	@GetMapping("/GetVendor/{id}")
+	public User getVendorById(@PathVariable("id") int id)
 	{
-		return service.getUserById(id);
+		return service.getVendorById(id);
 	}
 	
-	@PostMapping(value="/CheckUser")
-	public User checkUSer(@RequestBody AuthorizeUser user)
+	@PostMapping(value="/CheckVendor")
+	public User checkVendor(@RequestBody AuthorizeUser vendor)
 	{
-		User u = service.findByEmail(user.getEmail());
+		User u = service.findByEmail(vendor.getEmail());
          
-			if(u.getEmail().equalsIgnoreCase(user.getEmail()) && u.getPassword().equals(user.getPassword()))
+			if(u.getEmail().equalsIgnoreCase(vendor.getEmail()) && u.getPassword().equals(vendor.getPassword()))
 			{
 				System.out.println(u.getEmail());
 				System.out.println(u.getPassword());
@@ -51,15 +53,15 @@ public class UserController {
 		return null;	
 	}
 	
-	@GetMapping("/GetAllUsers")
-	public List<User> getAllUser()
+	@GetMapping("/GetAllVendors")
+	public List<Vendor> getAllVendor()
 	{
-		return service.getAllUser();
+		return service.getAllVendor();
 	}
 	
 	
-	@DeleteMapping("/deleteUser/{id}")
-	public void deleteUser(@PathVariable("id") int id) {
-		service.deleteUser(id);
+	@DeleteMapping("/deleteVendor/{id}")
+	public void deleteVendor(@PathVariable("id") int id) {
+		service.deleteVendor(id);
 	}
 }

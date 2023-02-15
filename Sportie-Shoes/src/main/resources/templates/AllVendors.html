@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>All Users</title>
+      <title>All Vendors</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -50,8 +50,8 @@
                         <ul>
                            <li><a href="/">Logout</a></li>
                            <li><a href="#">Manage Products</a></li>
-                           <li><a href="#">Manage Users</a></li>
-                           <li><a href="/AllVendors">Manage Vendors</a></li>
+                           <li><a href="/AllUsers">Manage Users</a></li>
+                           <li><a href="#">Manage Vendors</a></li>
                            <li><a href="#">----</a></li>
                         </ul>
                      </div>
@@ -74,7 +74,7 @@
                      <div class="carousel-item active">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Users</h1>
+                              <h1 class="banner_taital">All Vendors</h1>
                             
                            </div>
                         </div>
@@ -82,14 +82,14 @@
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Users</h1>
+                              <h1 class="banner_taital">All Vendors</h1>
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Users</h1>
+                              <h1 class="banner_taital">All Vendors</h1>
                              
                            </div>
                         </div>
@@ -112,11 +112,11 @@
       
           <table class="table">
           <tr>
-              <th>User ID</th>
-              <th>User Name</th>
+              <th>Vendor ID</th>
+              <th>Business Name</th>
               <th>Email ID</th>
-              <th>D.O.B</th>
-              <th>Gender</th>
+              <th>D.O.E</th>
+              <th>Address</th>
               <th>Phone no.</th>
               
           </tr>
@@ -153,7 +153,7 @@
 		{
 			$.ajax(
 					{
-					url:"/GetAllUsers",
+					url:"/GetAllVendors",
 					success:function(data)
 					{
 
@@ -162,10 +162,10 @@
 					            {
 					   emp+='<tr>';
 					       emp+='<td>'+data[i].id+'</td>';
-					   emp+='<td>'+data[i].name+'</td>';
+					   emp+='<td>'+data[i].businessName+'</td>';
 					   emp+='<td>'+data[i].email+'</td>';
-					   emp+='<td>'+data[i].dob+'</td>';
-					   emp+='<td>'+data[i].gender+'</td>';
+					   emp+='<td>'+data[i].doe+'</td>';
+					   emp+='<td>'+data[i].address+'</td>';
 					   emp+='<td>'+data[i].pno+'</td>';
 					   emp+='<td> <button style="color:black;" type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal"  onclick="getUserInfo('+data[i].id+');">Edit</button></td>';
 					   emp+='<td> <button style="color:black;" type="button" class="btn btn-danger"   onclick="deleteUser('+data[i].id+');">delete</button></td>';
@@ -189,7 +189,7 @@
 		{
 			$.ajax( {
 				    type:"DELETE",
-				    url:"/deleteUser/"+ id, 
+				    url:"/deleteVendor/"+ id, 
 				    contentType: "application/json",
 					
 					success:function(resp, status){

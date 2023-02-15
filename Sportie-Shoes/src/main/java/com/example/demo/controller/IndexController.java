@@ -48,4 +48,16 @@ public class IndexController {
 	{
 		return "AllUsers";
 	}
+	
+	@RequestMapping("/VendorRegistration")
+	public String vendorRegistration()
+	{
+		return "VendorRegistration";
+	}
+	
+	@RequestMapping("/AllVendors")
+	public String AllVendors()
+	{
+		return "AllVendors";
+	}
 }

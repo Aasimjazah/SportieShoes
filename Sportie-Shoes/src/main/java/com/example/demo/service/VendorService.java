@@ -7,35 +7,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
+import com.example.demo.entity.Vendor;
 import com.example.demo.repo.UserRepo;
+import com.example.demo.repo.VendorRepo;
 
 @Service
-public class UserService 
+public class VendorService 
 {
 
 	@Autowired
-	private UserRepo repo;
+	private VendorRepo repo;
 	
-	public User addUser(User user)
+	public Vendor addVendor(Vendor vendor)
 	{
 		
-		return repo.save(user);
+		return repo.save(vendor);
 		
 	}
 	
-	public List<User> getAllUser()
+	public List<Vendor> getAllVendor()
 	{
-		return (List<User>) repo.findAll();
+		return (List<Vendor>) repo.findAll();
 	}
 	
-	public User getUserById(int id)
+	public User getVendorById(int id)
 	{
-		return repo.getUserById(id);
+		return repo.getVendorById(id);
 		
 	}
 	
 
-	public void deleteUser(int id)
+	public void deleteVendor(int id)
 	{
 		
 	        repo.deleteById(id);

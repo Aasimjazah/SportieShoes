@@ -27,13 +27,13 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">User Registration Form</h2>
+                    <h2 class="title">Vendor Registration Form</h2>
                     <form action="#" method="POST" >
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Name</label>
-                                    <input class="input--style-4" id="name" type="text" name="name">
+                                    <label class="label">Business Name</label>
+                                    <input class="input--style-4" id="businessName" type="text" businessName="name">
                                 </div>
                             </div>
                             <div class="col-2">
@@ -46,25 +46,19 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Birthday</label>
+                                    <label class="label">Date of Established</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" id="dob" type="date" name="birthday">
+                                        <input class="input--style-4 js-datepicker" id="doe" type="date" name="doe">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Gender</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Male
-                                            <input type="radio" id="gender" name="gender" value="maleer">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Female
-                                            <input type="radio" id="gender"  name="gender" value="female">
-                                            <span class="checkmark"></span>
-                                        </label>
+                                     <label class="label">Address</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" id="address" type="text" name="address">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
                             </div>
@@ -109,15 +103,15 @@
   function save() {
 	    console.log("running");
 		var data = {}
-		data["name"] = $("#name").val();
+		data["businessName"] = $("#businessName").val();
 		data["email"] = $("#email").val();
-		data["dob"] = $("#dob").val();
-		data["gender"] =  $("#gender").val();
+		data["doe"] = $("#doe").val();
+		data["address"] =  $("#address").val();
 		data["pno"] = $("#pno").val();
 		data["password"] = $("#password").val();
 		
 		console.log(data);
-		$.ajax( {url:"/SaveUser", 
+		$.ajax( {url:"/SaveVendor", 
 			    contentType: "application/json",
 			    data: JSON.stringify(data), 
 			    
