@@ -7,7 +7,7 @@ import com.example.demo.entity.Vendor;
 
 public interface VendorRepo extends CrudRepository<Vendor, Integer> {
 
-	public User getVendorById(int id);
+	public Vendor getVendorById(int id);
 	
-	public User findByEmail(String email);
+	public Vendor findByEmail(String email);
 }

@@ -30,20 +30,19 @@ public class VendorService
 		return (List<Vendor>) repo.findAll();
 	}
 	
-	public User getVendorById(int id)
+	public Vendor getVendorById(int id)
 	{
 		return repo.getVendorById(id);
 		
 	}
 	
-
 	public void deleteVendor(int id)
 	{
 		
 	        repo.deleteById(id);
 	}
 	
-	public User findByEmail(String email)
+	public Vendor findByEmail(String email)
 	{
 	     return repo.findByEmail(email);	
 	}

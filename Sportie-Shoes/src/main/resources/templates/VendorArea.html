@@ -10,7 +10,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>User Area</title>
+      <title>Vendor Area</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -59,9 +59,9 @@
                         <ul>
                            <li><h4 id="name"></h4></li>
                            <li><a href="/">Logout</a></li>
-                           <li><a href="/UserProfile">My Profile</a></li>
-                           <li><a href="#">My Orders</a></li>
-                           <li><a href="#">Manage Vendors</a></li>
+                           <li><a href="#">My Profile</a></li>
+                           <li><a href="/AddProduct">Add Products</a></li>
+                           <li><a href="#">My Products</a></li>
                         </ul>
                      </div>
                   </div>
@@ -648,7 +648,7 @@
 			data["email"] = $.cookie("email");
 			data["password"] = $.cookie("password");
 		
-			$.ajax( {url:"/CheckUser", 
+			$.ajax( {url:"/CheckVendor", 
 			    contentType: "application/json",
 			    data: JSON.stringify(data), 
 			    
@@ -667,12 +667,13 @@
 
 		            console.log(result);
 		            
-		            $('#name').html(result.name);
+		            $('#name').html(result.businessName);
 		            $.cookie("id",result.id); 
-		            $.cookie("name",result.name); 
+		            $.cookie("businessName",result.businessName); 
 		            $.cookie("email",result.email); 
-		            $.cookie("dob",result.dob); 
-		            $.cookie("gender",result.gender); 
+		            $.cookie("doe",result.doe); 
+		            $.cookie("address",result.address); 
+		            $.cookie("password",result.password); 
 		            $.cookie("pno",result.pno); 
      
 		

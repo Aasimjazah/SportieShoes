@@ -20,7 +20,7 @@
             <div class="card bg-white">
               <div class="card-body p-5">
                 <form action="#" method="post" class="mb-3 mt-md-4" >
-                  <h2 class="fw-bold mb-2 text-uppercase ">User Login</h2>
+                  <h2 class="fw-bold mb-2 text-uppercase ">Vendor Login</h2>
                   <p class=" mb-5">Please enter your login and password!</p>
                   <div class="mb-3">
                     <label for="email" class="form-label ">Email address</label>
@@ -37,7 +37,7 @@
                   </div>
                 </form>
                 <div>
-                  <p class="mb-0  text-center">Don't have an account? <a href="/UserRegistration" class="text-primary fw-bold">Sign
+                  <p class="mb-0  text-center">Don't have an account? <a href="/VendorRegistration" class="text-primary fw-bold">Sign
                       Up</a></p>
                 </div>
 
@@ -58,7 +58,7 @@
 				data["email"]= $("#email").val();
 			   data["password"]= $("#password").val();
 				console.log(data);
-				$.ajax( {url:"/CheckUser", 
+				$.ajax( {url:"/CheckVendor", 
 					    contentType: "application/json",
 					    data: JSON.stringify(data), 
 						type:"post",
@@ -71,7 +71,7 @@
 				        success: function (data) {
 				        	   $.cookie("email",$("#email").val()); 
 				        	   $.cookie("password",$("#password").val()); 
-				        	   window.location.replace("/UserArea");
+				        	   window.location.replace("/VendorArea");
 				
 				        },
 						

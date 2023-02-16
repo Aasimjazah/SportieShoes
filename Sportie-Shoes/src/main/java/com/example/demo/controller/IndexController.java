@@ -55,9 +55,39 @@ public class IndexController {
 		return "VendorRegistration";
 	}
 	
+	@RequestMapping("/VendorLogin")
+	public String VendorLogin()
+	{
+		return "/VendorLogin";
+	}
+	
 	@RequestMapping("/AllVendors")
 	public String AllVendors()
 	{
 		return "AllVendors";
+	}
+	
+	@RequestMapping("/VendorArea")
+	public String VendorArea()
+	{
+		return "VendorArea";
+	}
+	
+	@RequestMapping("/AddProduct")
+	public String AddProduct()
+	{
+		return "AddProduct";
+	}
+	
+	@RequestMapping("/ManageProducts")
+	public String ManageProduct()
+	{
+		return "ManageProducts";
+	}
+	
+	@RequestMapping("/UserProfile")
+	public String userProfile()
+	{
+		return "UserProfile";
 	}
 }

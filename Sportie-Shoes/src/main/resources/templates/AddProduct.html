@@ -10,12 +10,14 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Add Product </title>
 
     <!-- Icons font CSS-->
   
-   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
     
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
 
     <!-- Main CSS-->
@@ -27,7 +29,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">User Registration Form</h2>
+                    <h2 class="title">Add Product</h2>
                     <form action="#" method="POST" >
                         <div class="row row-space">
                             <div class="col-2">
@@ -38,34 +40,26 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-4" id="email" type="text" name="last_name">
+                                    <label class="label">Brand</label>
+                                    <input class="input--style-4" id="brand" type="text" name="brand">
                                 </div>
                             </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Birthday</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" id="dob" type="date" name="birthday">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                    </div>
+                                    <label class="label">Category</label>
+                                    <select class="input--style-4" id="category" aria-label="Default select example">
+ 									     <option value="Men">Men</option>
+ 										 <option value="Kids">Kids</option>
+ 										 <option value="Women">Women</option>
+									</select>
                                 </div>
                             </div>
-                            <div class="col-2">
+                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Gender</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Male
-                                            <input type="radio"  name="gender" value="male">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Female
-                                            <input type="radio"  name="gender" value="female">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
+                                    <label class="label">Price</label>
+                                    <input class="input--style-4" id="price" type="text" name="price">
                                 </div>
                             </div>
                         </div>
@@ -73,14 +67,30 @@
                          
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Phone Number</label>
-                                    <input class="input--style-4" id="pno" type="text" name="phone">
+                                    <label class="label">Quantity</label>
+                                    <input class="input--style-4" id="quantity" type="text" name="phone">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" id="password" type="password" name="phone">
+                                    <label class="label">Size</label>
+                                    <input class="input--style-4" id="size" type="text" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        
+                         <div class="row row-space">
+                         
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Discount</label>
+                                    <input class="input--style-4" id="discount" type="text" name="phone">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Status</label>
+                                    <input class="input--style-4" id="status" type="text" name="phone" value="Pending" disabled>
                                 </div>
                             </div>
                         </div>
@@ -104,33 +114,25 @@
     
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+ 
  <script>
   function save() {
 	    console.log("running");
 		var data = {}
 		data["name"] = $("#name").val();
-		data["email"] = $("#email").val();
-		data["dob"] = $("#dob").val();
-		
-		//gender selection logic
-	    var ele = document.getElementsByName('gender'); 
-
-        for(i = 0; i < ele.length; i++) { 
-
-            if(ele[i].checked) 
-
-                 data["gender"]   = ele[i].value;      
-
-        } 
-		
-		
-		
-		data["pno"] = $("#pno").val();
-		data["password"] = $("#password").val();
+		data["vendorId"] = $.cookie("id");
+		data["vendorName"] = $.cookie("businessName");
+		data["brand"] = $("#brand").val();
+		data["category"] = $("#category").val();
+		data["price"] =  $("#price").val();
+		data["quantity"] = $("#quantity").val();
+		data["size"] = $("#size").val();
+		data["discount"] = $("#discount").val();
+		data["status"] = $("#status").val();
 		
 		console.log(data);
-		$.ajax( {url:"/SaveUser", 
+		$.ajax( {url:"/SaveProduct", 
 			    contentType: "application/json",
 			    data: JSON.stringify(data), 
 			    

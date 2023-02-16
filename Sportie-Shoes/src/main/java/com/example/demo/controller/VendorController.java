@@ -33,15 +33,15 @@ public class VendorController {
 	}
 	
 	@GetMapping("/GetVendor/{id}")
-	public User getVendorById(@PathVariable("id") int id)
+	public Vendor getVendorById(@PathVariable("id") int id)
 	{
 		return service.getVendorById(id);
 	}
 	
 	@PostMapping(value="/CheckVendor")
-	public User checkVendor(@RequestBody AuthorizeUser vendor)
+	public Vendor checkVendor(@RequestBody AuthorizeUser vendor)
 	{
-		User u = service.findByEmail(vendor.getEmail());
+		Vendor u = service.findByEmail(vendor.getEmail());
          
 			if(u.getEmail().equalsIgnoreCase(vendor.getEmail()) && u.getPassword().equals(vendor.getPassword()))
 			{
