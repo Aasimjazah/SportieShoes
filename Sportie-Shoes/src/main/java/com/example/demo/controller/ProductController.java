@@ -52,6 +52,12 @@ public class ProductController {
 		return service.getAllProduct();
 	}
 	
+	@GetMapping("/GetProductByCategory/{category}")
+	public List<Product> getProductsByCategory(@PathVariable("category") String category)
+	{
+		return service.getByCategory(category);
+	}
+	
 	
 	@DeleteMapping("/deleteProduct/{id}")
 	public void deleteProduct(@PathVariable("id") int id) {
@@ -93,6 +99,12 @@ public class ProductController {
 		service.addProduct(p);
 		System.out.println(p);
 		return new ResponseEntity<Object>("file uploaded",HttpStatus.OK);
+	}
+	
+	@GetMapping("/products/getbrandorcatgeory/{search}")
+	public List<Product> findsProductsByBrandOrCatgegory(@PathVariable("search")String search)
+	{
+		return service.getProductsByBrandOrCatgegory(search);
 	}
 	
 }

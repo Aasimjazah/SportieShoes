@@ -22,6 +22,7 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
+	
 	@PostMapping(value="/SaveUser")
 	public String saveUser(@RequestBody User user)
 	{
@@ -47,8 +48,9 @@ public class UserController {
 				System.out.println(u.getPassword());
 				return u;
 			}
-		
-		return null;	
+			
+			u.makeNull();
+		return u;	
 	}
 	
 	@GetMapping("/GetAllUsers")

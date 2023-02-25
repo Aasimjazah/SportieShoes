@@ -37,12 +37,22 @@ public class ProductService
 		
 	}
 	
+	public List<Product> getByCategory(String category)
+	{
+		return repo.findByCategory(category);
+		
+	}
+	
 	public void deleteProduct(int id)
 	{
 		
 	        repo.deleteById(id);
 	}
 	
+	public List<Product> getProductsByBrandOrCatgegory(String search)
+	{
+		return repo.findProductsByBrandOrCatgegory(search);
+	}
 
 	
 

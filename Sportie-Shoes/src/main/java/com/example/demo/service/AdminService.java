@@ -29,10 +29,10 @@ public class AdminService
 	
 
 	
-	
-	
-	
-	
+	public void saveAdminDetails(Admin admin)
+	{
+		repo.save(admin);
+	}
 
 
 }

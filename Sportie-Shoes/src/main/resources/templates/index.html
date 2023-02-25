@@ -83,17 +83,18 @@
                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#" onclick="getAllProduct()">All</a>
+                        <a class="dropdown-item" href="#" onclick="productByMenCategory('Men')">Men</a>
+                        <a class="dropdown-item" href="#" onclick="productByMenCategory('Women')">Women</a>
+                        <a class="dropdown-item" href="#" onclick="productByMenCategory('Kids')">Kids</a>
                      </div>
                   </div>
                   <div class="main">
                      <!-- Another variation with a button -->
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <input type="text" onkeypress="getCategoryOrBrand()" class="form-control" id="searchByBrandOrCategory" placeholder="Search this blog">
                         <div class="input-group-append">
-                           <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                           <button class="btn btn-secondary" type="button" onclick="getCategoryOrBrand()" style="background-color: #f26522; border-color:#f26522 ">
                            <i class="fa fa-search"></i>
                            </button>
                         </div>
@@ -229,7 +230,7 @@
  					            	   temp +='<div class="row">';
  					            	   
  					            	   temp +='<div class="col-sm-3 col-sm-3">';
- 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')""><img style="width:100px,height:100px;"src="images/shoe.jpg" /></a>';
+ 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')""><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
  					            	   temp +='<h4 class="shirt_text">'+data[i].name+'</h4>';
  					            	   temp +='<h6 class="shirt_text">'+data[i].brand+'</h6>';
  					            	   var price=data[i].price;
@@ -255,6 +256,90 @@
  		
  		 getAllProduct();
  	});
+ 	
+ 	
+ 	
+ 	function productByMenCategory(category)
+ 	{
+ 		console.log(category);
+ 		$.ajax( 
+ 				 { 
+ 					 url:"/GetProductByCategory/"+category,
+ 					 success:function(data) 
+ 					 { 
+ 						 console.log(data.length);
+ 					            var temp='<div class="row">';
+ 					            for(var i=0;i<data.length;i++)
+ 					            	{
+ 					            	if(data[i].status=="Approved"){
+ 					            	  if(i%4==0&&i>1) 
+ 		                            	     temp +='</div>';
+ 		                            	     
+ 					            	   if(i%4==0&&i>1)
+ 					            	   temp +='<div class="row">';
+ 					            	   
+ 					            	   temp +='<div class="col-sm-3 col-sm-3">';
+ 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')""><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
+ 					            	   temp +='<h4 class="shirt_text">'+data[i].name+'</h4>';
+ 					            	   temp +='<h6 class="shirt_text">'+data[i].brand+'</h6>';
+ 					            	   var price=data[i].price;
+ 					            	   var discount=data[i].discount;
+ 					            	   var discountPrice=(price/100)*discount;
+ 					            	   var actualPrice=price-discountPrice;
+ 					            	   temp +='<p class="price_text">Rs.<span id="price" style="color: #262626;">'+actualPrice.toFixed(0)+'     <strike>Rs.'+data[i].price+'</strike> ('+data[i].discount+'% OFF)</span></p></div>';			   
+ 		                               temp +='</div>';
+ 		                               
+ 		                            
+ 					            	}
+ 					            	}
+ 					            temp +='</div>';
+ 					            
+ 					    $('#div').html(temp);
+ 					  },
+ 					  type:'GET' // POSt   PUT   DELETE
+ 					 
+          });
+ 	}
+ 	
+ 	function getCategoryOrBrand()
+ 	{
+ 		var search=$("#searchByBrandOrCategory").val();
+ 		$.ajax( 
+ 				 { 
+ 					 url:"/products/getbrandorcatgeory/"+search,
+ 					 success:function(data) 
+ 					 { 
+ 						 console.log(data.length);
+ 					            var temp='<div class="row">';
+ 					            for(var i=0;i<data.length;i++)
+ 					            	{
+ 					            	 if(i%4==0&&i>1) 
+ 	                            	     temp +='</div>';
+ 	                            	     
+ 				            	   if(i%4==0&&i>1)
+ 				            	   temp +='<div class="row">';
+ 				            	   
+ 				            	   temp +='<div class="col-sm-3 col-sm-3">';
+ 				            	   temp +='<div class="tshirt_img"><a href="#" ><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
+ 				            	   temp +='<h4 class="shirt_text">'+data[i].name+'</h4>';
+ 				            	   temp +='<h6 class="shirt_text">'+data[i].brand+'</h6>';
+ 				            	   var price=data[i].price;
+ 				            	   var discount=data[i].discount;
+ 				            	   var discountPrice=(price/100)*discount;
+ 				            	   var actualPrice=price-discountPrice;
+ 				            	   temp +='<p class="price_text">Rs.<span id="price" style="color: #262626;">'+actualPrice.toFixed(0)+'     <strike>Rs.'+data[i].price+'</strike> ('+data[i].discount+'% OFF)</span></p></div>';			   
+ 	                               temp +='</div>';
+ 	                        
+ 					            	}
+ 					            temp +='</div>';
+ 					            
+ 					    $('#div').html(temp);
+ 					  },
+ 					  type:'GET' // POSt   PUT   DELETE
+ 					 
+ 	    });
+ 		
+ 	}
  	
 		  </script>
    </body>

@@ -95,6 +95,16 @@ public class User
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void makeNull()
+	{
+		this.name = null;
+		this.email = null;
+		this.dob = null;
+		this.gender = null;
+		this.pno = null;
+		this.password = null;
+	}
     
     
 	

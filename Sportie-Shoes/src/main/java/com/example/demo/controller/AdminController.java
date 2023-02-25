@@ -42,5 +42,13 @@ public class AdminController {
 		return null ;	
 	}
 	
+	@PostMapping(value="/SaveAdmin")
+	public String saveAdmin(@RequestBody Admin admin)
+	{
+		service.saveAdminDetails(admin);
+		
+		return "success";
+	}
+	
 	
 }

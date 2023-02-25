@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Login</title>
+    <title>Admin Access</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
+ 
   </head>
 
   <body style="background-image: linear-gradient(to right, #D16B88, #E2C9D0);">
@@ -19,27 +19,22 @@
           <div class="col-12 col-md-8 col-lg-6">
             <div class="card bg-white">
               <div class="card-body p-5">
-                <form action="#" method="post" class="mb-3 mt-md-4" >
-                  <h2 class="fw-bold mb-2 text-uppercase ">User Login</h2>
-                  <p class=" mb-5">Please enter your login and password!</p>
+                <form action="#" class="mb-3 mt-md-4">
+                  <h2 class="fw-bold mb-2 text-uppercase ">Admin Access</h2>
+                  <p class=" mb-5">Please enter details</p>
                   <div class="mb-3">
                     <label for="email" class="form-label ">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="username" placeholder="name@example.com">
                   </div>
                   <div class="mb-3">
-                    <label for="password" class="form-label ">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="*******">
+                    <label for="text" class="form-label ">Password</label>
+                    <input type="text" class="form-control" id="password" placeholder="">
                   </div>
                   <span style="color:red;" id="msg"></span>
-                  <p class="small"><a class="text-primary" href="forget-password.html">Forgot password?</a></p>
                   <div class="d-grid">
-                    <button class="btn btn-outline-dark" type="button" onclick="save()">Login</button>
+                    <button class="btn btn-outline-dark" type="button" onclick="save()">Save</button>
                   </div>
                 </form>
-                <div>
-                  <p class="mb-0  text-center">Don't have an account? <a href="/UserRegistration" class="text-primary fw-bold">Sign
-                      Up</a></p>
-                </div>
 
               </div>
             </div>
@@ -49,16 +44,14 @@
     </div>
 
   </body>
-  
-  
   <script>
   function save() {
 	  
 				var data = {}
-				data["email"]= $("#email").val();
+				data["username"]= $("#username").val();
 			   data["password"]= $("#password").val();
 				console.log(data);
-				$.ajax( {url:"/CheckUser", 
+				$.ajax( {url:"/SaveAdmin", 
 					    contentType: "application/json",
 					    data: JSON.stringify(data), 
 						type:"post",
@@ -66,27 +59,16 @@
 						cache: false,
 				        timeout: 600000,
 				        error: function (request, error) {
-					      $("#msg").html("Incorrect Email or Password");
+				        	 $("#msg").html("Incorrect Email or Password");
 					    },
 				        success: function (data) {
-				        	var result = JSON.parse(data);
-				        	console.log(data);
-				        	console.log(result.email);
-				        	if(result.email!=null){
-				        	   $.cookie("email",$("#email").val()); 
-				        	   $.cookie("password",$("#password").val()); 
-				        	   window.location.replace("/UserArea");
-				        	}
-				        	else
-				        		{
-				        		 $("#msg").html("Incorrect Email or Password");
-				        		}
-				
+				        	console.log(data.length);
+				        	
+				        	$("#msg").html("Registered Successfully");
 				        },
 						
 				});
 			}
 		  </script>
-		
 
 </html>

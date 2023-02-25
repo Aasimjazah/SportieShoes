@@ -88,4 +88,10 @@ public class IndexController {
 	{
 		return "AllProduct";
 	}
+	
+	@RequestMapping("/ProvideAdminAccess")
+	public String provideAdminAccess()
+	{
+		return "ProvideAdminAccess";
+	}
 }
