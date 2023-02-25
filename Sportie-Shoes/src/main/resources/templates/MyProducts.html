@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>All Vendors</title>
+      <title>Manage Products</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -35,8 +35,9 @@
       <link rel="stylesheet" href="css/owl.carousel.min.css">
       <link rel="stylesoeet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     
    </head>
    <body>
       <!-- banner bg main start -->
@@ -50,8 +51,8 @@
                         <ul>
                            <li><a href="/">Logout</a></li>
                            <li><a href="#">Manage Products</a></li>
-                           <li><a href="/AllUsers">Manage Users</a></li>
-                           <li><a href="#">Manage Vendors</a></li>
+                           <li><a href="#">Manage Users</a></li>
+                           <li><a href="/AllVendors">Manage Vendors</a></li>
                            <li><a href="#">----</a></li>
                         </ul>
                      </div>
@@ -74,7 +75,7 @@
                      <div class="carousel-item active">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Vendors</h1>
+                              <h1 class="banner_taital">All Products</h1>
                             
                            </div>
                         </div>
@@ -82,14 +83,14 @@
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Vendors</h1>
+                              <h1 class="banner_taital">All Products</h1>
                            </div>
                         </div>
                      </div>
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Vendors</h1>
+                              <h1 class="banner_taital">All Users</h1>
                              
                            </div>
                         </div>
@@ -112,12 +113,17 @@
       
           <table class="table">
           <tr>
-              <th>Vendor ID</th>
-              <th>Business Name</th>
-              <th>Email ID</th>
-              <th>D.O.E</th>
-              <th>Address</th>
-              <th>Phone no.</th>
+              <th>Product ID</th>
+              <th>Brand</th>
+              <th>Category</th>
+              <th>Discount</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Size</th>
+              <th>Status</th>
+              <th>Vendor Id </th>
+              <th>Vendor Name</th>
               
           </tr>
           <tbody id="tb">
@@ -146,14 +152,16 @@
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
      <script>
   $(document).ready(function()
 			{
 		{
+			var id = $.cookie("id");
+			console.log(id);
 			$.ajax(
 					{
-					url:"/GetAllVendors",
+					
+					url:"/GetMyProduct/"+id,
 					success:function(data)
 					{
 
@@ -162,14 +170,20 @@
 					            {
 					   emp+='<tr>';
 					       emp+='<td>'+data[i].id+'</td>';
-					   emp+='<td>'+data[i].businessName+'</td>';
-					   emp+='<td>'+data[i].email+'</td>';
-					   emp+='<td>'+data[i].doe+'</td>';
-					   emp+='<td>'+data[i].address+'</td>';
-					   emp+='<td>'+data[i].pno+'</td>';
-					   emp+='<td> <button style="color:black;" type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal"  onclick="getUserInfo('+data[i].id+');">Edit</button></td>';
-					   emp+='<td> <button style="color:black;" type="button" class="btn btn-danger"   onclick="deleteUser('+data[i].id+');">delete</button></td>';
+					   emp+='<td>'+data[i].brand+'</td>';
+					   emp+='<td>'+data[i].category+'</td>';
+					   emp+='<td>'+data[i].discount+'</td>';
+					   emp+='<td>'+data[i].name+'</td>';
+					   emp+='<td>'+data[i].price+'</td>';
+					   emp+='<td>'+data[i].quantity+'</td>';
+					   emp+='<td>'+data[i].size+'</td>';
+					   emp+='<td>'+data[i].status+'</td>';
+					   emp+='<td>'+data[i].vendorId+'</td>';
+					   emp+='<td>'+data[i].vendorName+'</td>';
+					   emp+='<td> <button style="color:black;" type="button" class="btn btn-success"   onclick="approveProduct('+data[i].id+');">Approve</button></td>';
+					   emp+='<td> <button style="color:black;" type="button" class="btn btn-danger"   onclick="rejectProduct('+data[i].id+');">Reject</button></td>';
 
+					   
 					emp+='</tr>';
 					            }
 
@@ -182,14 +196,35 @@
 			}
 	});
   
-  function deleteUser(id){
+  function approveProduct(id){
 	   console.log(id);
 	   var result = confirm("are you Sure!");
 		if(result==true) 
 		{
 			$.ajax( {
-				    type:"DELETE",
-				    url:"/deleteVendor/"+ id, 
+				    type:"PUT",
+				    url:"/ApproveProduct/"+ id, 
+				    contentType: "application/json",
+					
+					success:function(resp, status){
+						console.log(resp+" "+ status);	
+						location.reload();
+						//alert("deleted");
+					},
+				
+		          });
+		}
+	   
+}
+  
+  function rejectProduct(id){
+	   console.log(id);
+	   var result = confirm("are you Sure!");
+		if(result==true) 
+		{
+			$.ajax( {
+				    type:"PUT",
+				    url:"/RejectProduct/"+ id, 
 				    contentType: "application/json",
 					
 					success:function(resp, status){

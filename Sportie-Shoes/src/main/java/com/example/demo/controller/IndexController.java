@@ -49,17 +49,7 @@ public class IndexController {
 		return "AllUsers";
 	}
 	
-	@RequestMapping("/VendorRegistration")
-	public String vendorRegistration()
-	{
-		return "VendorRegistration";
-	}
 	
-	@RequestMapping("/VendorLogin")
-	public String VendorLogin()
-	{
-		return "/VendorLogin";
-	}
 	
 	@RequestMapping("/AllVendors")
 	public String AllVendors()
@@ -67,11 +57,7 @@ public class IndexController {
 		return "AllVendors";
 	}
 	
-	@RequestMapping("/VendorArea")
-	public String VendorArea()
-	{
-		return "VendorArea";
-	}
+	
 	
 	@RequestMapping("/AddProduct")
 	public String AddProduct()
@@ -89,5 +75,17 @@ public class IndexController {
 	public String userProfile()
 	{
 		return "UserProfile";
+	}
+	
+	@RequestMapping("/MyProducts")
+	public String myProducts()
+	{
+		return "MyProducts";
+	}
+	
+	@RequestMapping("/AllProduct")
+	public String AllProducts()
+	{
+		return "AllProduct";
 	}
 }

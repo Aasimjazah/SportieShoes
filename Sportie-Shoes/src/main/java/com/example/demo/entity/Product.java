@@ -16,10 +16,8 @@ public class Product {
 	private String brand;
 	private String category;
 	private String price;
-	private int vendorId;
-	private String vendorName;
 	private int quantity;
-	private int size;
+	private double size;
 	private int discount;
 	private String status;
 	private String imgname;
@@ -29,15 +27,14 @@ public class Product {
 	}
 	
 
-	public Product(String name, String brand, String category, String price, int vendorId, String vendorName,
-			int quantity, int size, int discount, String status, String imgname) {
+	public Product(String name, String brand, String category, String price,
+			int quantity, double size, int discount, String status, String imgname) {
 		super();
 		this.name = name;
 		this.brand = brand;
 		this.category = category;
 		this.price = price;
-		this.vendorId = vendorId;
-		this.vendorName = vendorName;
+		
 		this.quantity = quantity;
 		this.size = size;
 		this.discount = discount;
@@ -87,10 +84,10 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getSize() {
+	public double getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(double size) {
 		this.size = size;
 	}
 	public int getDiscount() {
@@ -111,37 +108,17 @@ public class Product {
 	public void setImgname(String imgname) {
 		this.imgname = imgname;
 	}
-	
-	
-	public int getVendorId() {
-		return vendorId;
-	}
-
-
-
-	public void setVendorId(int vendorId) {
-		this.vendorId = vendorId;
-	}
-	
-	
-
-
-
-	public String getVendorName() {
-		return vendorName;
-	}
-
-
-	public void setVendorName(String vendorName) {
-		this.vendorName = vendorName;
-	}
 
 
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", brand=" + brand + ", category=" + category + ", price="
 				+ price + ", quantity=" + quantity + ", size=" + size + ", discount=" + discount + ", status=" + status
-				+ " , imgname=" + imgname+ "]";
+				+ ", imgname=" + imgname + "]";
 	}
+	
+	
+	
+	
 	
 }
