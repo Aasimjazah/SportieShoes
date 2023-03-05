@@ -50,5 +50,17 @@ public class AdminController {
 		return "success";
 	}
 	
+	@PostMapping(value="/ResetPassword")
+	public String resetPassword(@RequestBody Admin admin)
+	{
+		System.out.println(admin);
+		Admin ad = service.getAdminByUsername(admin.getUsername());
+		
+		ad.setPassword(admin.getPassword());
+		service.saveAdminDetails(ad);
+		
+		return "success";
+	}
+	
 	
 }

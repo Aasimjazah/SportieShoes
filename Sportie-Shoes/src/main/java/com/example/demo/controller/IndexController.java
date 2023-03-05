@@ -113,4 +113,10 @@ public class IndexController {
 		return "MyOrder";
 	}
 	
+	@RequestMapping("/ResetPassword")
+	public String resetPassword()
+	{
+		return "ResetPassword";
+	}
+	
 }
