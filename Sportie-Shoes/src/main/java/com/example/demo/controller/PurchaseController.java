@@ -46,5 +46,13 @@ public class PurchaseController {
     	 
 		
 	}
+	
+	@GetMapping("/GetAllOrder")
+    public List<Purchase> allOrder()
+    {
+	  return service.getAllOrder();
+	
+		
+	}
 
 }

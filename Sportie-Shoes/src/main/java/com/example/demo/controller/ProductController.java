@@ -107,4 +107,11 @@ public class ProductController {
 		return service.getProductsByBrandOrCatgegory(search);
 	}
 	
+	@PutMapping("/product/updateproduct/{id}") 
+	public Product updateProduct(@RequestBody Product product , @PathVariable("id") int id) 
+	{ 
+	 return service.updateProduct(product, id);
+	 
+	}
+	
 }

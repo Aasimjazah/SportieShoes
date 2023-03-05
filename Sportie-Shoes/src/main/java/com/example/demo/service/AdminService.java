@@ -33,6 +33,12 @@ public class AdminService
 	{
 		repo.save(admin);
 	}
+	
+	public List<Admin> getAllAdmin()
+	{
+		return (List<Admin>) repo.findAll();
+				
+	}
 
 
 }

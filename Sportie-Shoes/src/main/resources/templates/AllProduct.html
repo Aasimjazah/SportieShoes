@@ -83,7 +83,7 @@
 	
 	 function getProductInfo(id){
 		  
-		    $.get("/product/getproduct/" + id, function(data) {
+		    $.get("/GetProduct/"+id, function(data) {
 			console.log(data);
 			console.log("insideGetUpdate");
 			$('#id').val(data.id);
@@ -119,7 +119,7 @@
 					dataType: 'json',
 					success:function(resp, status){
 						console.log(resp+" "+ status);	
-						alert("updated");
+						location.reload();
 					},
 				
 			});

@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,12 @@ public class PurchaseService
 		
 	}
 	
+	public List<Purchase> getAllOrder()
+	{
+		
+      return (List<Purchase>) repo.findAll();
+		
+	}
 
 	
 	

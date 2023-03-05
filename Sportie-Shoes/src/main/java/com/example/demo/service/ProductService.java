@@ -54,6 +54,21 @@ public class ProductService
 		return repo.findProductsByBrandOrCatgegory(search);
 	}
 
-	
+	public Product updateProduct(Product product , int id) 
+	{
+		Product p=repo.findById(id);
+		
+			p.setName(product.getName());
+			p.setBrand(product.getBrand());
+			p.setCategory(product.getCategory());
+			p.setDiscount(product.getDiscount());
+			p.setPrice(product.getPrice());
+			p.setQuantity(product.getQuantity());
+			p.setSize(product.getSize());
+			p.setStatus(product.getStatus());
+		    return repo.save(p);
+
+		
+	}
 
 }

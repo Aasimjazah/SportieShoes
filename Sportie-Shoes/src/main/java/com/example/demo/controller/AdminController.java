@@ -62,5 +62,11 @@ public class AdminController {
 		return "success";
 	}
 	
+	@GetMapping("/GetAllAdmin")
+	public List<Admin> getAllAdmin()
+	{
+		return service.getAllAdmin();
+	}
+	
 	
 }

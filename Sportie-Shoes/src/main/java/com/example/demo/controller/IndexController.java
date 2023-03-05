@@ -119,4 +119,15 @@ public class IndexController {
 		return "ResetPassword";
 	}
 	
+	@RequestMapping("/AllAdmin")
+	public String allAdmin()
+	{
+		return "AllAdmin";
+	}
+	
+	@RequestMapping("/PlacedOrder")
+	public String placedOrder()
+	{
+		return "PlacedOrder";
+	}
 }

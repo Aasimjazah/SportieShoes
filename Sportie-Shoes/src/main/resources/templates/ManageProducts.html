@@ -50,9 +50,10 @@
                         <ul>
                            <li><a href="/">Logout</a></li>
                            <li><a href="#">Manage Products</a></li>
-                           <li><a href="#">Manage Users</a></li>
+                           <li><a href="/AllUsers">Manage Users</a></li>
                            <li><a href="/AddProduct">Add Products</a></li>
-                           <li><a href="#">----</a></li>
+                             <li><button style="color:black;" type="button" class="btn btn-danger" onclick="placedOrder()" >Placed Order</button></li>
+
                         </ul>
                      </div>
                   </div>
@@ -74,8 +75,7 @@
                      <div class="carousel-item active">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Products</h1>
-                            
+                            <h1 class="banner_taital">All Products</h1>
                            </div>
                         </div>
                      </div>
@@ -89,7 +89,7 @@
                      <div class="carousel-item">
                         <div class="row">
                            <div class="col-sm-12">
-                              <h1 class="banner_taital">All Users</h1>
+                      <h1 class="banner_taital">All Products</h1>
                              
                            </div>
                         </div>
@@ -232,6 +232,11 @@
 		}
 	   
 }
+  
+  function placedOrder()
+  {
+	  window.location.replace("/PlacedOrder");
+  }
 		  </script>
    </body>
 </html>
