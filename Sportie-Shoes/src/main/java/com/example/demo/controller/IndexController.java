@@ -94,4 +94,23 @@ public class IndexController {
 	{
 		return "ProvideAdminAccess";
 	}
+	
+	@RequestMapping("/PurchaseProduct")
+	public String purchaseProduct()
+	{
+		return "PurchaseProduct";
+	}
+	
+	@RequestMapping("/Payment")
+	public String payment()
+	{
+		return "Payment";
+	}
+	
+	@RequestMapping("/MyOrder")
+	public String myOrder()
+	{
+		return "MyOrder";
+	}
+	
 }

@@ -33,7 +33,7 @@ public class ProductService
 	
 	public Product getProductById(int id)
 	{
-		return repo.getProductById(id);
+		return repo.findById(id);
 		
 	}
 	

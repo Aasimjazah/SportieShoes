@@ -35,6 +35,9 @@
       <link rel="stylesheet" href="css/owl.carousel.min.css">
       <link rel="stylesoeet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
    </head>
    <body>
       <!-- banner bg main start -->
@@ -208,7 +211,8 @@
       <script src="js/plugin.js"></script>
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      
+    
      <script>
      function getAllProduct()
  	{
@@ -230,7 +234,7 @@
  					            	   temp +='<div class="row">';
  					            	   
  					            	   temp +='<div class="col-sm-3 col-sm-3">';
- 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')""><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
+ 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')"><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
  					            	   temp +='<h4 class="shirt_text">'+data[i].name+'</h4>';
  					            	   temp +='<h6 class="shirt_text">'+data[i].brand+'</h6>';
  					            	   var price=data[i].price;
@@ -279,7 +283,7 @@
  					            	   temp +='<div class="row">';
  					            	   
  					            	   temp +='<div class="col-sm-3 col-sm-3">';
- 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')""><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
+ 					            	   temp +='<div class="tshirt_img"><a href="#" onclick="purchaseProduct('+data[i].id+')"><img style="width:100px,height:100px;"src="images/'+data[i].imgname+'" /></a>';
  					            	   temp +='<h4 class="shirt_text">'+data[i].name+'</h4>';
  					            	   temp +='<h6 class="shirt_text">'+data[i].brand+'</h6>';
  					            	   var price=data[i].price;
@@ -340,7 +344,12 @@
  	    });
  		
  	}
- 	
+ 	function purchaseProduct(id)
+ 	{
+ 		console.log(id);
+ 		
+ 		window.location.replace("/UserLogin");
+ 	}
 		  </script>
    </body>
 </html>

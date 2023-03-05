@@ -71,8 +71,9 @@
 				        success: function (data) {
 				        	var result = JSON.parse(data);
 				        	console.log(data);
-				        	console.log(result.email);
+				        	console.log(result.id);
 				        	if(result.email!=null){
+				        		
 				        	   $.cookie("email",$("#email").val()); 
 				        	   $.cookie("password",$("#password").val()); 
 				        	   window.location.replace("/UserArea");

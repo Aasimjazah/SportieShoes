@@ -11,7 +11,7 @@ import com.example.demo.entity.Product;
 
 public interface ProductRepo extends CrudRepository<Product, Integer> {
 
-	public Product getProductById(int id);
+	public Product findById(int id);
 	
 	public List<Product> findByCategory(String category);
 	
